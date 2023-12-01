@@ -6,11 +6,18 @@ services:
       context: ./
       dockerfile: Dockerfile
     ports:
-      - "8000:7865"
-    deploy:
-      resources:
-        reservations:
-          devices:
-            - driver: nvidia
-              count: 1
-              capabilities: [gpu]
+      - "8004:7865"
+    env_file:
+      - .env
+    volumes:
+      - tts-audio:/tmp/gradio
+    # deploy:
+    #   resources:
+    #     reservations:
+    #       devices:
+    #         - driver: nvidia
+    #           count: 1
+    #           capabilities: [gpu]
+
+volumes:
+  applio:
